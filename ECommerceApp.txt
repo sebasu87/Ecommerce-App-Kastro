@@ -767,7 +767,7 @@ pipeline {
         // ✅ These two stages were outside of "stages" block before. Moved inside.
         stage('Deploy To Kubernetes') {
             steps {
-                withKubeConfig(caCertificate: '', clusterName: 'kastro-eks', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://A3A38B4561B8159534054B870C447E05.yl4.us-east-1.eks.amazonaws.com') {
+                withKubeConfig(caCertificate: '', clusterName: ' sebasu-eks', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://59E4E5AA29E33D1894CDF8C77BE53F77.gr7.ap-southeast-1.eks.amazonaws.com') {
                     sh "kubectl apply -f deployment-service.yaml -n webapps"
                 }
             }
@@ -775,7 +775,7 @@ pipeline {
 
         stage('Verify the Deployment') {
             steps {
-                withKubeConfig(caCertificate: '', clusterName: 'kastro-eks', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://A3A38B4561B8159534054B870C447E05.yl4.us-east-1.eks.amazonaws.com') {
+                withKubeConfig(caCertificate: '', clusterName: ' sebasu-eks', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://59E4E5AA29E33D1894CDF8C77BE53F77.gr7.ap-southeast-1.eks.amazonaws.com') {
                     sh "kubectl get pods -n webapps"
                     sh "kubectl get svc -n webapps"
                 }
@@ -822,3 +822,4 @@ pipeline {
 
 To access the App, we need to get the Load Balancer URL
 kuetl get all -n webapps
+
